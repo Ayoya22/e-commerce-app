@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.demo.matrixinterceptor.interceptorservice;
+package com.example.demo.interceptionOfMatrices.interceptorservice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

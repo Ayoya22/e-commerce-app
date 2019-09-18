@@ -29,55 +29,40 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * The Class UserControllerTest.
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 class UserControllerTests {
 
-    /** The user controller. */
+
     @InjectMocks
     private UserController userController;
 
-    /** The user repo. */
-    @Mock
-    private UserRepository userRepo;
-
-    /** The cart repo. */
-    @Mock
-    private CartRepository cartRepo;
-
-    /** The encoder. */
-    @Mock
-    private PasswordEncoder encoder;
-
-    /** The mock mvc. */
-    @Autowired
-    private MockMvc mockMvc;
-
-    /** The object mapper. */
     @Autowired
     private ObjectMapper objectMapper;
 
-    /** The request. */
     @Autowired
     private MockHttpServletRequest request;
 
-    /** The user. */
     private AppUser user;
 
-    /** The user request. */
     private CreateUserRequest userRequest;
 
-    /**
-     * Inits the.
-     *
-     * @throws Exception the exception
-     */
+    @Mock
+    private UserRepository userRepo;
+
+    @Mock
+    private CartRepository cartRepo;
+
+    @Mock
+    private PasswordEncoder encoder;
+
+    @Autowired
+    private MockMvc mockMvc;
+
     @BeforeEach
-    public void initialization() throws Exception {
+    public void initializationSetup() throws Exception {
     	userRequest = new CreateUserRequest();
     	userRequest.setUsername("ravi");
     	userRequest.setPassword("password");
@@ -95,11 +80,7 @@ class UserControllerTests {
     	request.addParameter("Authorization", result.getResponse().getHeader("Authorization"));
     }
 
-    /**
-     * Test get user with username and id.
-     *
-     * @throws Exception the exception
-     */
+
     @Test
     public void testGetUserWithUsernameAndIdApis() throws Exception {
     	when(userRepo.findByUsername(Mockito.anyString())).thenReturn(user);

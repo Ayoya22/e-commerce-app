@@ -1,17 +1,17 @@
-package com.example.demo.matrixinterceptor.configuration;
+package com.example.demo.interceptionOfMatrices.configure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.example.demo.matrixinterceptor.interceptors.LogInterceptor;
+import com.example.demo.interceptionOfMatrices.interceptors.LogInterceptor;
 
 /**
  * The Class InterceptorConfig.
  */
 @Configuration
-public class InterceptorConfig implements WebMvcConfigurer {
+public class ConfigurationInterceptor implements WebMvcConfigurer {
 
     @Autowired
     LogInterceptor logInterceptor;

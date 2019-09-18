@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.demo.matrixinterceptor.interceptors;
+package com.example.demo.interceptionOfMatrices.interceptors;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.matrixinterceptor.interceptorservice.LoggingService;
+import com.example.demo.interceptionOfMatrices.interceptorservice.LoggingService;
 
 /**
  * The Class LogInterceptor.

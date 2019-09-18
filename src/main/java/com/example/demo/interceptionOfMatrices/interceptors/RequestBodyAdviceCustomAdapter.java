@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.demo.matrixinterceptor.interceptors;
+package com.example.demo.interceptionOfMatrices.interceptors;
 
 import java.lang.reflect.Type;
 
@@ -14,7 +14,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdviceAdapter;
 
-import com.example.demo.matrixinterceptor.interceptorservice.LoggingService;
+import com.example.demo.interceptionOfMatrices.interceptorservice.LoggingService;
 
 /**
  * The Class RequestBodyAdviceCustomAdapter.

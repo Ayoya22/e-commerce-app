@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package com.example.demo.JWT_Security;
 
 import static java.util.Collections.emptyList;
 

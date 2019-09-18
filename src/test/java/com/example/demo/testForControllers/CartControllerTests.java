@@ -72,7 +72,7 @@ class CartControllerTests {
     @BeforeEach
     public void initialization() throws JsonProcessingException, Exception {
 		userRequest = new CreateUserRequest();
-		userRequest.setUsername("ravi");
+		userRequest.setUsername("mert");
 		userRequest.setPassword("password");
 		userRequest.setConfirmPassword("password");
 
@@ -92,13 +92,10 @@ class CartControllerTests {
     @Test
     public void testToCheckRemoveFromCart() throws JsonProcessingException, Exception {
 		when(userRepo.findByUsername(Mockito.anyString())).thenReturn(user);
-
-		// test the addToCart method positive and negative flows
-
 		ModifyCartRequest addToCartRequest = new ModifyCartRequest();
 		addToCartRequest.setItemId(1L);
 		addToCartRequest.setQuantity(10);
-		addToCartRequest.setUsername("ravi");
+		addToCartRequest.setUsername("mert");
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/cart/addToCart")
 			.content(objectMapper.writeValueAsString(addToCartRequest)).contentType(MediaType.APPLICATION_JSON)
@@ -110,18 +107,17 @@ class CartControllerTests {
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isUnauthorized());
 
-		addToCartRequest.setUsername("ravi1");
+		addToCartRequest.setUsername("mertCnat");
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/cart/addToCart")
 			.content(objectMapper.writeValueAsString(addToCartRequest)).contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON).header("Authorization", request.getParameter("Authorization")))
 			.andExpect(status().isNotFound());
 
-		// test the removeFromCart method positive and negative flows
 
 		ModifyCartRequest removeFromCartRequest = new ModifyCartRequest();
 		removeFromCartRequest.setItemId(1L);
 		removeFromCartRequest.setQuantity(4);
-		removeFromCartRequest.setUsername("ravi");
+		removeFromCartRequest.setUsername("mert");
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/cart/removeFromCart")
 			.content(objectMapper.writeValueAsString(removeFromCartRequest)).contentType(MediaType.APPLICATION_JSON)
@@ -132,7 +128,7 @@ class CartControllerTests {
 			.content(objectMapper.writeValueAsString(removeFromCartRequest)).contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON)).andExpect(status().isUnauthorized());
 
-		removeFromCartRequest.setUsername("ravi1");
+		removeFromCartRequest.setUsername("mertCnat");
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/cart/removeFromCart")
 			.content(objectMapper.writeValueAsString(removeFromCartRequest)).contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON).header("Authorization", request.getParameter("Authorization")))

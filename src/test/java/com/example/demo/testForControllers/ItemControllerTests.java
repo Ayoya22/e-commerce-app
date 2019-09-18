@@ -37,7 +37,7 @@ class ItemControllerTests {
 	private MockMvc mockMvc;
 
 	@Test
-	public void testGetItemsApi() throws Exception {
+	public void testGetApiForItems() throws Exception {
 		MvcResult mvcResult = mockMvc
 				.perform(MockMvcRequestBuilders.get("/api/item").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();
@@ -46,7 +46,7 @@ class ItemControllerTests {
 	}
 
 	@Test
-	public void testGetItemByNameApi() throws Exception {
+	public void testGetItemByApiName() throws Exception {
 		MvcResult mvcResult = mockMvc.perform(
 				MockMvcRequestBuilders.get("/api/item/name/{name}", "Round Widget").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();
@@ -59,7 +59,7 @@ class ItemControllerTests {
 	}
 
 	@Test
-	public void testGetItemByIdApi() throws Exception {
+	public void testGetItemByApiId() throws Exception {
 		MvcResult mvcResult = mockMvc
 				.perform(MockMvcRequestBuilders.get("/api/item/{id}", 1).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();

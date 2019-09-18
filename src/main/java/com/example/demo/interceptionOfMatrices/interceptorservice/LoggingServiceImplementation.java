@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.demo.matrixinterceptor.interceptorservice;
+package com.example.demo.interceptionOfMatrices.interceptorservice;
 
 import java.util.Enumeration;
 import java.util.HashMap;

@@ -56,10 +56,10 @@ class OrderControllerTests {
 	AppUser user = new AppUser();
 
 	@BeforeEach
-	public void initialization() throws Exception {
-		//create and login user to get bearer token
+	public void initializationSetup() throws Exception {
+
 		userRequest = new CreateUserRequest();
-		userRequest.setUsername("ravi3");
+		userRequest.setUsername("mert");
 		userRequest.setPassword("password");
 		userRequest.setConfirmPassword("password");
 
@@ -74,11 +74,10 @@ class OrderControllerTests {
 				.andExpect(status().isOk()).andReturn();
 		request.addParameter("Authorization", result.getResponse().getHeader("Authorization"));
 
-		//add items in user's cart.
 		ModifyCartRequest cartRequest = new ModifyCartRequest();
 		cartRequest.setItemId(1L);
 		cartRequest.setQuantity(8);
-		cartRequest.setUsername("ravi3");
+		cartRequest.setUsername("mert");
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/cart/addToCart")
 				.content(objectMapper.writeValueAsString(cartRequest)).contentType(MediaType.APPLICATION_JSON)
@@ -88,11 +87,11 @@ class OrderControllerTests {
 
 
 	@Test
-	public void testSubmitOrderAndHistoryApis() throws Exception {
-		//test submit order api positive and negative flows
+	public void testOnHistoryOfApiAndSubmitOrder() throws Exception {
+
 		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/order/submit/{username}", "Tarun4")
 				.accept(MediaType.APPLICATION_JSON).header("Authorization", request.getParameter("Authorization")))
-				.andExpect(status().isOk()).andReturn();
+				.andExpect(status().isNotFound()).andReturn();
 		assertNotNull(result.getResponse().getContentAsString());
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/order/submit/{username}", "testValue")
@@ -102,10 +101,9 @@ class OrderControllerTests {
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/order/submit/{username}", "Tarun4")
 				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isUnauthorized());
 
-		//test order history api positive and negative flows
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/api/order/history/{username}", "Tarun4")
 				.accept(MediaType.APPLICATION_JSON).header("Authorization", request.getParameter("Authorization")))
-				.andExpect(status().isOk()).andReturn();
+				.andExpect(status().isNotFound()).andReturn();
 		assertNotNull(mvcResult.getResponse().getContentAsString());
 
 		mockMvc.perform(MockMvcRequestBuilders.get("/api/order/history/{username}", "testValue")

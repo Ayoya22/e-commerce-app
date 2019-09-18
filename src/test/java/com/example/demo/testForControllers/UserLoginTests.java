@@ -62,15 +62,15 @@ class UserLoginTests {
     CreateUserRequest userRequest;
 
     @BeforeEach
-    public void initialization() {
+    public void initializationSetup() {
     	userRequest = new CreateUserRequest();
-    	userRequest.setUsername("newuser");
+    	userRequest.setUsername("mert");
     	userRequest.setPassword("password");
     	userRequest.setConfirmPassword("password");
     }
 
     @Test
-    public void testCreateUserSuccess() throws Exception {
+    public void testForUserCreation() throws Exception {
     	mockMvc.perform(
     		MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))
     			.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
@@ -79,8 +79,8 @@ class UserLoginTests {
     }
 
     @Test   
-    public void testCreateUserLoginScenario() throws Exception {
-    	userRequest.setUsername("tt");
+    public void testCreateUserLoginEvent() throws Exception {
+    	userRequest.setUsername("time");
     	mockMvc.perform(
     		MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))
     			.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
@@ -93,23 +93,19 @@ class UserLoginTests {
     	request.addParameter("Authorization", result.getResponse().getHeader("Authorization"));
     	assertNotNull(request.getParameter("Authorization"));
 
-    	userRequest.setUsername("tt1");
+    	userRequest.setUsername("tikitaka");
     	mockMvc.perform(MockMvcRequestBuilders.post("/login").content(objectMapper.writeValueAsString(userRequest)))
     		.andExpect(status().isUnauthorized()).andReturn();
 
-    	userRequest.setUsername("tt1");
-    	userRequest.setPassword("testPass");
+    	userRequest.setUsername("tikitaka");
+    	userRequest.setPassword("testPassword");
     	mockMvc.perform(MockMvcRequestBuilders.post("/login").content(objectMapper.writeValueAsString(userRequest)))
     		.andExpect(status().isUnauthorized()).andReturn();
     }
 
-    /**
-     * Test create user failure 1.
-     *
-     * @throws Exception the exception
-     */
+
     @Test
-    public void testCreateUserFailure1() throws Exception {
+    public void testUnsuccessfulCreateUser() throws Exception {
     	userRequest.setUsername(null);
     	mockMvc.perform(
     		MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))
@@ -119,9 +115,9 @@ class UserLoginTests {
 
 
     @Test
-    public void testCreateUserFailure2() throws Exception {
-    	userRequest.setPassword("haha");
-    	userRequest.setConfirmPassword("haha");
+    public void testUnsuccessfulCreateUser2() throws Exception {
+    	userRequest.setPassword("make");
+    	userRequest.setConfirmPassword("make");
     	mockMvc.perform(
     		MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))
     			.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
@@ -130,7 +126,7 @@ class UserLoginTests {
 
 
     @Test
-    public void testCreateUserFailure3() throws Exception {
+    public void testUnsuccessfulCreateUser4() throws Exception {
     	userRequest.setUsername("");
     	mockMvc.perform(
     		MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.demo.matrixinterceptor.interceptors;
+package com.example.demo.interceptionOfMatrices.interceptors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -14,7 +14,7 @@ import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import com.example.demo.matrixinterceptor.interceptorservice.LoggingService;
+import com.example.demo.interceptionOfMatrices.interceptorservice.LoggingService;
 
 /**
  * The Class ResponseBodyAdviceCustomAdapter.

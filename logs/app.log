@@ -1,15 +1,25 @@
-2019-09-18 05:46:59,735 +0100 [main] INFO  (LogInterceptor.java:52) - 
-REQUEST path=[/api/user/create] method=[POST] headers=[{Accept=application/json, Content-Type=application/json;charset=UTF-8}] body=[com.example.demo.model.requests.CreateUserRequest@53d808ea]
-RESPONSE path=[/api/user/create] method=[POST] status=[ 200 ] responseBody=[com.example.demo.model.persistence.ApplicationUser@4822ab4d] 
-RESPONSETIME: 143
+2019-09-18 13:50:29,626 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/item/1] method=[GET] headers=[{Accept=application/json}] 
+RESPONSE path=[/api/item/1] method=[GET] status=[ 200 ] responseBody=[com.example.demo.model.persistence.Item@20] 
+RESPONSETIME: 75
 
-2019-09-18 05:47:00,056 +0100 [main] INFO  (LogInterceptor.java:52) - 
-REQUEST path=[/api/cart/addToCart] method=[POST] headers=[{Authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYXZpMyIsImV4cCI6MTU2OTY0NjAxOX0.uUZcHTXDOfZR-Nxhi-3nV0etNeUgxe7G0JM9swcqp0D-X6HFhyPiX6CYCmw69DzcjVNNww5KGHXxSmHfwrsrgA, Accept=application/json, Content-Type=application/json;charset=UTF-8}] body=[com.example.demo.model.requests.ModifyCartRequest@f9de1fd]
-RESPONSE path=[/api/cart/addToCart] method=[POST] status=[ 200 ] responseBody=[com.example.demo.model.persistence.Cart@2c4be45f] 
-RESPONSETIME: 39
+2019-09-18 13:50:29,635 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/item/57] method=[GET] headers=[{Accept=application/json}] 
+RESPONSE path=[/api/item/57] method=[GET] status=[ 404 ] 
+RESPONSETIME: 2
 
-2019-09-18 05:47:00,065 +0100 [main] INFO  (LogInterceptor.java:52) - 
-null
-RESPONSE path=[/api/order/submit/Tarun4] method=[POST] status=[ 404 ] 
-RESPONSETIME: 4
+2019-09-18 13:50:29,714 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/item] method=[GET] headers=[{Accept=application/json}] 
+RESPONSE path=[/api/item] method=[GET] status=[ 200 ] responseBody=[[com.example.demo.model.persistence.Item@20, com.example.demo.model.persistence.Item@21]] 
+RESPONSETIME: 73
+
+2019-09-18 13:50:29,732 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/item/name/Round%20Widget] method=[GET] headers=[{Accept=application/json}] 
+RESPONSE path=[/api/item/name/Round%20Widget] method=[GET] status=[ 200 ] responseBody=[[com.example.demo.model.persistence.Item@20]] 
+RESPONSETIME: 13
+
+2019-09-18 13:50:29,735 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/item/name/Toys] method=[GET] headers=[{Accept=application/json}] 
+RESPONSE path=[/api/item/name/Toys] method=[GET] status=[ 404 ] 
+RESPONSETIME: 1
 

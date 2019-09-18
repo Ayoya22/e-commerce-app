@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.model.persistence.ApplicationUser;
+import com.example.demo.model.persistence.AppUser;
 import com.example.demo.model.persistence.UserOrder;
 
 /**
@@ -18,5 +18,5 @@ public interface OrderRepository extends JpaRepository<UserOrder, Long> {
 	 * @param user the user
 	 * @return the list
 	 */
-	List<UserOrder> findByUser(ApplicationUser user);
+	List<UserOrder> findByUser(AppUser user);
 }

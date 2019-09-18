@@ -1,10 +1,9 @@
-package com.example.demo.controllertest;
+package com.example.demo.testForControllers;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -21,7 +20,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.example.demo.controllers.CartController;
-import com.example.demo.model.persistence.ApplicationUser;
+import com.example.demo.model.persistence.AppUser;
 import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.ItemRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
@@ -35,46 +34,41 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc
 class CartControllerTests {
     
-	/** The cart controller. */
+
     @InjectMocks
     private CartController cartController;
 
-    /** The user repo. */
+
     @Mock
     private UserRepository userRepo;
 
-    /** The cart repo. */
+
     @Mock
     private CartRepository cartRepo;
 
-    /** The item repo. */
+
     @Mock
     private ItemRepository itemRepo;
 
-    /** The mock mvc. */
+
     @Autowired
     private MockMvc mockMvc;
 
-    /** The object mapper. */
+
     @Autowired
     private ObjectMapper objectMapper;
 
-    /** The request. */
+
     @Autowired
     private MockHttpServletRequest request;
 
-    /** The user. */
-    private ApplicationUser user;
 
-    /** The user request. */
+    private AppUser user;
+
+
     private CreateUserRequest userRequest;
 
-    /**
-     * Inits the.
-     *
-     * @throws JsonProcessingException the json processing exception
-     * @throws Exception               the exception
-     */
+
     @BeforeEach
     public void initialization() throws JsonProcessingException, Exception {
 		userRequest = new CreateUserRequest();
@@ -86,7 +80,7 @@ class CartControllerTests {
 			MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk()).andReturn();
-		user = objectMapper.readValue(entity.getResponse().getContentAsString(), ApplicationUser.class);
+		user = objectMapper.readValue(entity.getResponse().getContentAsString(), AppUser.class);
 
 		MvcResult result = mockMvc
 			.perform(MockMvcRequestBuilders.post("/login").content(objectMapper.writeValueAsString(userRequest)))
@@ -94,14 +88,9 @@ class CartControllerTests {
 		request.addParameter("Authorization", result.getResponse().getHeader("Authorization"));
     }
 
-    /**
-     * Test cart controller.
-     *
-     * @throws JsonProcessingException the json processing exception
-     * @throws Exception               the exception
-     */
+
     @Test
-    public void testAddAndRemoveFromCart() throws JsonProcessingException, Exception {
+    public void testToCheckRemoveFromCart() throws JsonProcessingException, Exception {
 		when(userRepo.findByUsername(Mockito.anyString())).thenReturn(user);
 
 		// test the addToCart method positive and negative flows

@@ -1,25 +1,25 @@
-2019-09-18 13:50:29,626 +0100 [main] INFO  (LogInterceptor.java:52) - 
-REQUEST path=[/api/item/1] method=[GET] headers=[{Accept=application/json}] 
-RESPONSE path=[/api/item/1] method=[GET] status=[ 200 ] responseBody=[com.example.demo.model.persistence.Item@20] 
-RESPONSETIME: 75
+2019-09-18 15:03:01,997 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/user/create] method=[POST] headers=[{Accept=application/json, Content-Type=application/json;charset=UTF-8}] body=[com.example.demo.model.requests.CreateUserRequest@33a3e5db]
+RESPONSE path=[/api/user/create] method=[POST] status=[ 200 ] responseBody=[com.example.demo.model.persistence.AppUser@9cb927e] 
+RESPONSETIME: 151
 
-2019-09-18 13:50:29,635 +0100 [main] INFO  (LogInterceptor.java:52) - 
-REQUEST path=[/api/item/57] method=[GET] headers=[{Accept=application/json}] 
-RESPONSE path=[/api/item/57] method=[GET] status=[ 404 ] 
-RESPONSETIME: 2
+2019-09-18 15:03:02,330 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/cart/addToCart] method=[POST] headers=[{Authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYXZpIiwiZXhwIjoxNTY5Njc5MzgyfQ.65CvUv1_gdzA9NXU5GmZb7NRxweF5c_Q2Xns-nfb9C1s8sqgeHfIignIl7PB10nQRgBuoPHpmkKKEWSe36AQpQ, Accept=application/json, Content-Type=application/json;charset=UTF-8}] body=[com.example.demo.model.requests.ModifyCartRequest@a97a895]
+RESPONSE path=[/api/cart/addToCart] method=[POST] status=[ 200 ] responseBody=[com.example.demo.model.persistence.Cart@683fac7e] 
+RESPONSETIME: 28
 
-2019-09-18 13:50:29,714 +0100 [main] INFO  (LogInterceptor.java:52) - 
-REQUEST path=[/api/item] method=[GET] headers=[{Accept=application/json}] 
-RESPONSE path=[/api/item] method=[GET] status=[ 200 ] responseBody=[[com.example.demo.model.persistence.Item@20, com.example.demo.model.persistence.Item@21]] 
-RESPONSETIME: 73
-
-2019-09-18 13:50:29,732 +0100 [main] INFO  (LogInterceptor.java:52) - 
-REQUEST path=[/api/item/name/Round%20Widget] method=[GET] headers=[{Accept=application/json}] 
-RESPONSE path=[/api/item/name/Round%20Widget] method=[GET] status=[ 200 ] responseBody=[[com.example.demo.model.persistence.Item@20]] 
-RESPONSETIME: 13
-
-2019-09-18 13:50:29,735 +0100 [main] INFO  (LogInterceptor.java:52) - 
-REQUEST path=[/api/item/name/Toys] method=[GET] headers=[{Accept=application/json}] 
-RESPONSE path=[/api/item/name/Toys] method=[GET] status=[ 404 ] 
+2019-09-18 15:03:02,336 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/cart/addToCart] method=[POST] headers=[{Authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYXZpIiwiZXhwIjoxNTY5Njc5MzgyfQ.65CvUv1_gdzA9NXU5GmZb7NRxweF5c_Q2Xns-nfb9C1s8sqgeHfIignIl7PB10nQRgBuoPHpmkKKEWSe36AQpQ, Accept=application/json, Content-Type=application/json;charset=UTF-8}] body=[com.example.demo.model.requests.ModifyCartRequest@77f04d1a]
+RESPONSE path=[/api/cart/addToCart] method=[POST] status=[ 404 ] 
 RESPONSETIME: 1
+
+2019-09-18 15:03:02,347 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/cart/removeFromCart] method=[POST] headers=[{Authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYXZpIiwiZXhwIjoxNTY5Njc5MzgyfQ.65CvUv1_gdzA9NXU5GmZb7NRxweF5c_Q2Xns-nfb9C1s8sqgeHfIignIl7PB10nQRgBuoPHpmkKKEWSe36AQpQ, Accept=application/json, Content-Type=application/json;charset=UTF-8}] body=[com.example.demo.model.requests.ModifyCartRequest@126f2eb8]
+RESPONSE path=[/api/cart/removeFromCart] method=[POST] status=[ 200 ] responseBody=[com.example.demo.model.persistence.Cart@c79780] 
+RESPONSETIME: 9
+
+2019-09-18 15:03:02,352 +0100 [main] INFO  (LogInterceptor.java:52) - 
+REQUEST path=[/api/cart/removeFromCart] method=[POST] headers=[{Authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYXZpIiwiZXhwIjoxNTY5Njc5MzgyfQ.65CvUv1_gdzA9NXU5GmZb7NRxweF5c_Q2Xns-nfb9C1s8sqgeHfIignIl7PB10nQRgBuoPHpmkKKEWSe36AQpQ, Accept=application/json, Content-Type=application/json;charset=UTF-8}] body=[com.example.demo.model.requests.ModifyCartRequest@5868ea91]
+RESPONSE path=[/api/cart/removeFromCart] method=[POST] status=[ 404 ] 
+RESPONSETIME: 2
 

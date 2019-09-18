@@ -1,4 +1,4 @@
-package com.example.demo.controllertest;
+package com.example.demo.testForControllers;
 
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -19,56 +19,42 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.example.demo.controllers.OrderController;
-import com.example.demo.model.persistence.ApplicationUser;
+import com.example.demo.model.persistence.AppUser;
 import com.example.demo.model.persistence.repositories.OrderRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
 import com.example.demo.model.requests.ModifyCartRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * The Class OrderControllerTest.
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 class OrderControllerTests {
 
-	/** The order controller. */
+
 	@InjectMocks
 	private OrderController orderController;
 
-	/** The user repo. */
 	@Mock
 	private UserRepository userRepo;
 
-	/** The order repo. */
 	@Mock
 	private OrderRepository orderRepo;
 
-	/** The request. */
 	@Autowired
 	private MockHttpServletRequest request;
 
-	/** The mock mvc. */
 	@Autowired
 	private MockMvc mockMvc;
 
-	/** The object mapper. */
 	@Autowired
 	private ObjectMapper objectMapper;
 
-	/** The user request. */
 	CreateUserRequest userRequest;
 
-	/** The user. */
-	ApplicationUser user = new ApplicationUser();
+	AppUser user = new AppUser();
 
-	/**
-	 * Inits the user creation.
-	 *
-	 * @throws Exception the exception
-	 */
 	@BeforeEach
 	public void initialization() throws Exception {
 		//create and login user to get bearer token
@@ -81,7 +67,7 @@ class OrderControllerTests {
 				MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))
 						.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();
-		user = objectMapper.readValue(entityResult.getResponse().getContentAsString(), ApplicationUser.class);
+		user = objectMapper.readValue(entityResult.getResponse().getContentAsString(), AppUser.class);
 
 		MvcResult result = mockMvc
 				.perform(MockMvcRequestBuilders.post("/login").content(objectMapper.writeValueAsString(userRequest)))
@@ -100,11 +86,7 @@ class OrderControllerTests {
 				.andExpect(status().isOk());
 	}
 
-	/**
-	 * Test order creation and history.
-	 *
-	 * @throws Exception the exception
-	 */
+
 	@Test
 	public void testSubmitOrderAndHistoryApis() throws Exception {
 		//test submit order api positive and negative flows

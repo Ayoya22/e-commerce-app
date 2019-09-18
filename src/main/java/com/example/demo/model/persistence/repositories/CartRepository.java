@@ -3,7 +3,7 @@ package com.example.demo.model.persistence.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.model.persistence.Cart;
-import com.example.demo.model.persistence.ApplicationUser;
+import com.example.demo.model.persistence.AppUser;
 
 /**
  * The Interface CartRepository.
@@ -16,5 +16,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 	 * @param user the user
 	 * @return the cart
 	 */
-	Cart findByUser(ApplicationUser user);
+	Cart findByUser(AppUser user);
 }

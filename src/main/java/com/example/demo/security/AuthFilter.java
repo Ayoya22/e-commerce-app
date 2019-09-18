@@ -31,23 +31,12 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
 	/** The authentication manager. */
 	private AuthenticationManager authenticationManager;
 
-	/**
-	 * Instantiates a new auth filter.
-	 *
-	 * @param authenticationManager the authentication manager
-	 */
+
 	public AuthFilter(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
 	}
 
-	/**
-	 * Attempt authentication.
-	 *
-	 * @param req the req
-	 * @param res the res
-	 * @return the authentication
-	 * @throws AuthenticationException the authentication exception
-	 */
+
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
 			throws AuthenticationException {
@@ -59,23 +48,13 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	/**
-	 * Successful authentication.
-	 *
-	 * @param req the req
-	 * @param res the res
-	 * @param chain the chain
-	 * @param auth the auth
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws ServletException the servlet exception
-	 */
+
 	@Override
 	protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
 		String token = Jwts.builder().setSubject(((User) auth.getPrincipal()).getUsername())
-				.setExpiration(new Date(System.currentTimeMillis() + AuthProperties.EXPIRATION_TIME))
-				.signWith(SignatureAlgorithm.HS512, AuthProperties.SECRET).compact();
-		res.addHeader(AuthProperties.HEADER_STRING, AuthProperties.TOKEN_PREFIX + token);
+				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
+				.signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET).compact();
+		res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
 	}
 }

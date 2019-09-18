@@ -1,10 +1,9 @@
-package com.example.demo.controllertest;
+package com.example.demo.testForControllers;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -27,47 +26,41 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * The Class CreateLoginTest.
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class LoginTests {
+class UserLoginTests {
 
-    /** The user controller. */
+
     @InjectMocks
     private UserController userController;
 
-    /** The user repo. */
+
     @Mock
     private UserRepository userRepo;
 
-    /** The cart repo. */
     @Mock
     private CartRepository cartRepo;
 
-    /** The encoder. */
+
     @Mock
     private BCryptPasswordEncoder encoder;
 
-    /** The mock mvc. */
+
     @Autowired
     private MockMvc mockMvc;
 
-    /** The request. */
+
     @Autowired
     private MockHttpServletRequest request;
 
     @Autowired
     private ObjectMapper objectMapper;
 
-    /** The user request. */
+
     CreateUserRequest userRequest;
 
-    /**
-     * Inits the.
-     */
     @BeforeEach
     public void initialization() {
     	userRequest = new CreateUserRequest();
@@ -76,11 +69,6 @@ class LoginTests {
     	userRequest.setConfirmPassword("password");
     }
 
-    /**
-     * Test create user happy scenario.
-     *
-     * @throws Exception the exception
-     */
     @Test
     public void testCreateUserSuccess() throws Exception {
     	mockMvc.perform(
@@ -90,11 +78,6 @@ class LoginTests {
     		.andReturn();
     }
 
-    /**
-     * Test create user login scenario.
-     *
-     * @throws Exception the exception
-     */
     @Test   
     public void testCreateUserLoginScenario() throws Exception {
     	userRequest.setUsername("tt");
@@ -134,11 +117,7 @@ class LoginTests {
     		.andExpect(status().isBadRequest()).andReturn();
     }
 
-    /**
-     * Test create user failure 2.
-     *
-     * @throws Exception the exception
-     */
+
     @Test
     public void testCreateUserFailure2() throws Exception {
     	userRequest.setPassword("haha");
@@ -149,11 +128,7 @@ class LoginTests {
     		.andExpect(status().isBadRequest()).andReturn();
     }
 
-    /**
-     * Test create user failure 3.
-     *
-     * @throws Exception the exception
-     */
+
     @Test
     public void testCreateUserFailure3() throws Exception {
     	userRequest.setUsername("");

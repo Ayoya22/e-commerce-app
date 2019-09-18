@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "user")
-public class ApplicationUser {
+public class AppUser {
 
 
 	@Id

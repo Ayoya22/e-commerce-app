@@ -1,4 +1,4 @@
-package com.example.demo.controllertest;
+package com.example.demo.testForControllers;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -24,7 +23,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.example.demo.controllers.UserController;
-import com.example.demo.model.persistence.ApplicationUser;
+import com.example.demo.model.persistence.AppUser;
 import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
@@ -67,7 +66,7 @@ class UserControllerTests {
     private MockHttpServletRequest request;
 
     /** The user. */
-    private ApplicationUser user;
+    private AppUser user;
 
     /** The user request. */
     private CreateUserRequest userRequest;
@@ -88,7 +87,7 @@ class UserControllerTests {
     		MockMvcRequestBuilders.post("/api/user/create").content(objectMapper.writeValueAsString(userRequest))
     			.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
     		.andExpect(status().isOk()).andReturn();
-    	user = objectMapper.readValue(entityResult.getResponse().getContentAsString(), ApplicationUser.class);
+    	user = objectMapper.readValue(entityResult.getResponse().getContentAsString(), AppUser.class);
 
     	MvcResult result = mockMvc
     		.perform(MockMvcRequestBuilders.post("/login").content(objectMapper.writeValueAsString(userRequest)))

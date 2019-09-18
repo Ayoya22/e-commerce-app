@@ -1,4 +1,4 @@
-package com.example.demo.controllertest;
+package com.example.demo.testForControllers;
 
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -19,32 +19,23 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.example.demo.controllers.ItemController;
 import com.example.demo.model.persistence.repositories.ItemRepository;
 
-/**
- * The Class ItemControllerTest.
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 class ItemControllerTests {
 
-	/** The item controller. */
 	@InjectMocks
 	private ItemController itemController;
 
-	/** The item repo. */
+
 	@Mock
 	private ItemRepository itemRepo;
 
-	/** The mock mvc. */
+
 	@Autowired
 	private MockMvc mockMvc;
 
-	/**
-	 * Test get all items api.
-	 *
-	 * @return the all item test
-	 * @throws Exception the exception
-	 */
 	@Test
 	public void testGetItemsApi() throws Exception {
 		MvcResult mvcResult = mockMvc
@@ -54,12 +45,6 @@ class ItemControllerTests {
 		assertNotNull(mvcResult.getResponse().getContentAsString());
 	}
 
-	/**
-	 * Test get the item by name api.
-	 *
-	 * @return the item by name
-	 * @throws Exception the exception
-	 */
 	@Test
 	public void testGetItemByNameApi() throws Exception {
 		MvcResult mvcResult = mockMvc.perform(
@@ -73,12 +58,6 @@ class ItemControllerTests {
 
 	}
 
-	/**
-	 * Test get item by id api.
-	 *
-	 * @return the item by id
-	 * @throws Exception the exception
-	 */
 	@Test
 	public void testGetItemByIdApi() throws Exception {
 		MvcResult mvcResult = mockMvc
